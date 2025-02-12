@@ -5,8 +5,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'LandingView',
-      component: () => import('../views/LandingView.vue'),
+      name: 'HomePage',
+      component: () => import('../views/HomePage.vue'),
     },
     {
       path: '/test/API',
