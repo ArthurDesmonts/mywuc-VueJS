@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Hello world</h1>
+        <h1 class="text-5xl font-extrabold justify-center uppercase text-center p-10">Hello world</h1>
     </div>
 </template>
 
