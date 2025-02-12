@@ -24,6 +24,9 @@ export default {
           800: 'color(display-p3 0.078 0.154 0.27)',
           100: 'color(display-p3 0.788 0.898 0.99)',
         },
+        customBlack: {
+          100: 'color(display-p3 0.067 0.067 0.067)',
+        }
       },
     },
   },
