@@ -26,6 +26,7 @@ export default {
         },
         customBlack: {
           100: 'color(display-p3 0.067 0.067 0.067)',
+          200: 'color(display-p3 0.098 0.098 0.098)',
         },
         customWhite: {
           100: 'color(display-p3 0.933 0.933 0.926)',

@@ -11,16 +11,27 @@
             </div>
         </div>
         
-        <div class="animate__fadeIn">
-            <hr class="w-full max-w-4xl border-t-2 border-customBlack-100 mb-2">
-
+        <div class="animate__fadeIn w-screen max-w-4xl mx-16 text-customBlack-200">
+            <hr class="border-t-2 border-customBlack-200 mb-2">
             <div id="subTitle" class=" w-full max-w-4xl text-center ">
-                <h2 class="text-customBlack-100 font-customInknut text-4xl font-mono font-medium">
+                <h2 class="font-customInknut text-4xl font-mono font-medium">
                     Mywuc is a simple and intuitive way to manage your wallet
                 </h2>
             </div>
+            <hr class="border-t-2 border-customBlack-200 mt-2">
+        </div>
 
-            <hr class="w-full max-w-4xl border-t-2 border-customBlack-100 mt-2">
+        <div class="w-full h-1/4 m-4 flex items-center justify-center">
+            <button class="bg-customBlack-100 text-white px-8 py-2 rounded-md font-customInknut text-xl animate__zoomIn">
+                Get Started
+            </button>
+        </div>
+
+        
+        <div class="w-full h-1/4 flex flex-row items-center justify-center animate__fadeIn">
+            <hr class="flex-grow border-t-2 border-customBlack-200 mx-16">
+            <p class="featureTitle font-customInknut text-6xl mx-6"> Features </p>
+            <hr class="flex-grow border-t-2 border-customBlack-200 mx-16">
         </div>
     </div>
 </template>
