@@ -12,6 +12,11 @@ const router = createRouter({
       path: '/test/API',
       name: 'API',
       component: () => import('../views/TestApi.vue'),
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: () => import('../views/Profile.vue'),
     }
   ],
 })

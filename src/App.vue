@@ -4,9 +4,7 @@ import '@/assets/tailwind.css'
 </script>
 
 <template>
-  <div>
+  <div class="bg-customWhite-100">
     <RouterView></RouterView>
   </div>
-
-  
 </template>
