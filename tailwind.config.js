@@ -22,7 +22,7 @@ export default {
         customBlue: {
           900: 'color(display-p3 0.057 0.081 0.122)',
           800: 'color(display-p3 0.078 0.154 0.27)',
-          100: 'color(display-p3 0.788 0.898 0.99)',
+          100: 'color(display-p3 0.14 0.298 0.511)',
         },
         customBlack: {
           100: 'color(display-p3 0.067 0.067 0.067)',

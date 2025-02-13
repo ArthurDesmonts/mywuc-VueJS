@@ -2,9 +2,14 @@
     <div class="flex h-screen flex-col items-center justify-center">
         <div class="flex w-full h-3/4 justify-between px-16">
             <div id="titleFrame" class="w-2/5 flex items-center justify-center animate__fadeIn titleFrame">
-                <h1 class="text-customBlack-100 text-center font-customInknut text-6xl leading-tight">
-                    Control your wallet with Mywuc
-                </h1>
+                <div>
+                    <h1 class="text-customBlack-100 text-center font-customInknut text-6xl leading-tight">
+                        Control your wallet with
+                    </h1>
+                    <h1 class="text-customBlue-100 text-center font-customInknut text-6xl leading-tight">
+                        Mywuc
+                    </h1>
+                </div>
             </div>
             <div class="w-1/2 flex justify-center animate__zoomIn ">
                 <img src="/wallet_homepage_picture.png" alt="Wallet" class="w-full max-w-[500px] h-auto object-contain">
