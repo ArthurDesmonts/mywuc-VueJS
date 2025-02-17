@@ -38,6 +38,12 @@
             <p class="featureTitle font-customInknut text-6xl mx-6"> Features </p>
             <hr class="flex-grow border-t-2 border-customBlack-200 mx-16">
         </div>
+
+        <div class="animate__fadeIn w-screen max-w-4xl mx-16 text-customBlack-200">
+            <div id="subTitle" class=" w-full max-w-4xl text-center ">
+                <p class="font-customInknut text-4xl font-mono font-medium font-">Comming Soon ... :)</p>
+            </div>
+        </div>
     </div>
 </template>
 
