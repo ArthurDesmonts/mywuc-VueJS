@@ -4,7 +4,7 @@
       <form @submit.prevent="handleSubmit">
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" required />
+          <input type="email" id="email" v-model="mail" required />
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
@@ -12,39 +12,33 @@
         </div>
         <button type="submit">Sign In</button>
       </form>
-      <p v-if="error">{{ error }}</p>
     </div>
   </template>
   
-  <script>
-  import { ref } from 'vue';
-  import { useStore } from 'vuex';
-  import { useRouter } from 'vue-router';
-  
-  const email = ref('');
-  const password = ref('');
-  const error = ref('');
-  const store = useStore();
-  const router = useRouter();
+<script setup>
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
 
-export default {
-    setup() {
-        const handleSubmit = async () => {
-            try {
-                await store.dispatch('auth/signIn', { email: email.value, password: password.value });
-                router.push('/profile');
-            } catch (err) {
-                error.value = 'Failed to sign in. Please check your credentials.';
-            }
-        };
+const mail = ref("");
+const password = ref("");
 
-        return {
-            email,
-            password,
-            error,
-            handleSubmit
-        };
+const store = useStore();
+const router = useRouter();
+
+async function handleSubmit(){
+    try {
+        const response = await axios.post('/user/login', {
+            mail: mail.value,
+            password: password.value
+        });
+        //console.log(response.data); //token
+        await store.dispatch('login', { mail: mail.value, password: password.value });
+        router.push('/');
+    } catch (error) {
+        console.error(error);
     }
-};
-  </script>
+}
+</script>
   
