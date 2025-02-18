@@ -8,6 +8,9 @@ export default createStore({
     user: {},
   },
   mutations: {
+    auth_request(state) {
+      state.status = 'loading';
+    },
     auth_success(state, { token, user }) {
       state.token = token;
       state.status = 'success';
