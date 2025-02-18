@@ -27,7 +27,7 @@
         </div>
 
         <div class="w-full h-1/4 m-4 flex items-center justify-center">
-            <button class="bg-customBlack-100 text-white px-8 py-2 rounded-md font-customInknut text-xl animate__zoomIn">
+            <button class="bg-customBlack-100 text-white px-8 py-2 rounded-md font-customInknut text-xl animate__zoomIn" @click="goToSignIn">
                 Get Started
             </button>
         </div>
@@ -75,3 +75,13 @@
         }
     }
 </style>
+
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const goToSignIn = () => {
+    router.push('/login');
+}
+</script>
