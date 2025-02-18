@@ -10,7 +10,7 @@
                     <input ref="phone" type="text" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Phone">
                     <input ref="pass" type="password" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Password">
                     <input ref="passConf" type="password" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Confirm Password">
-                    <button class="p-2 m-2 w-64 bg-blue-500 text-white rounded font-customPlayfair">Ready to start!</button>
+                    <button class="p-2 m-2 w-64 bg-black font-white text-white rounded font-customPlayfair">Ready to start!</button>
                 </form>
             </div>
         </div>
