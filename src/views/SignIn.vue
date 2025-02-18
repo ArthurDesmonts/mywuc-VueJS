@@ -6,6 +6,10 @@
                 <form class="flex flex-col items-center justify-center" @submit.prevent="handleSubmit">
                     <input v-model="mail" required type="email" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Email" autocomplete="email">
                     <input v-model="password" required type="password" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Password" autocomplete="current-password">
+                    <div class="flex items-center justify-center gap-2">
+                        <p>No account yet ? : </p>
+                        <router-link to="/signup" class="text-blue-500">Sign Up</router-link>
+                    </div>
                     <button type="submit" class="p-2 m-2 w-64 bg-black text-white rounded font-customPlayfair font-white">Login</button>
                 </form>
             </div>
