@@ -13,9 +13,9 @@ const routes = [
     component: () => import('../views/TestApi.vue'),
   },
   {
-    path: '/profile',
-    name: 'Profile',
-    component: () => import('../views/Profile.vue'),
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import('../views/Dashboard.vue'),
     meta: { requiresAuth: true },
   },
   {
