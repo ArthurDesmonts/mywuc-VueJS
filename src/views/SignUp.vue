@@ -2,15 +2,18 @@
     <div class="w-screen flex justify-center">
       <div class="h-screen w-full flex flex-col items-center justify-center">
         <div class="p-4 rounded bg-gray-300">
-          <h1 class="text-4xl font-bold text-center mb-2 font-customTeko">Sign Up</h1>
+          <div class="grid grid-cols-3">
+              <router-link to="/" class="text-2xl font-bold text-center font-customTeko grid-1 text-center font-bold">&#8592;</router-link>
+              <h1 class="text-4xl font-bold text-center mb-2 font-customTeko grid-2">Sign In</h1>
+          </div>
           <form class="flex flex-col items-center justify-center" @submit.prevent="handleSubmit">
-            <input v-model="name" type="text" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Name">
+            <input v-model="name" type="text" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Name*">
             <input v-model="firstName" type="text" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="First name">
-            <input v-model="mail" type="email" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Email">
-            <input v-model="phone" type="text" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Phone">
-            <input v-model="password" type="password" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Password">
-            <input v-model="passConf" type="password" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Confirm Password">
-            <button type="submit" class="p-2 m-2 w-64 bg-black font-white text-white rounded font-customPlayfair">Ready to start!</button>
+            <input v-model="mail" type="email" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Email*">
+            <input v-model="phone" type="text" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Phone*">
+            <input v-model="password" type="password" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Password*">
+            <input v-model="passConf" type="password" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Confirm Password*">
+            <button :disabled="!mail || !password || !name || !phone || !passConf" type="submit" class="p-2 m-2 w-64 bg-black font-white text-white rounded font-customPlayfair" :class="{'opacity-50 cursor-not-allowed': !mail || !password || !name || !phone || !passConf}">Ready to start!</button>
           </form>
         </div>
       </div>
