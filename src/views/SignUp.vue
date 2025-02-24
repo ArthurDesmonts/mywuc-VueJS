@@ -7,6 +7,9 @@
               <h1 class="text-4xl font-bold text-center mb-2 font-customTeko grid-2">Sign In</h1>
           </div>
           <form class="flex flex-col items-center justify-center" @submit.prevent="handleSubmit">
+            <div>
+                <p v-if="errorDetected" class="px-4 mx-2 w-64 rounded bg-red-500 radius-2 text-center">{{ error }}</p>
+            </div>
             <input v-model="name" type="text" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Name*">
             <input v-model="firstName" type="text" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="First name">
             <input v-model="mail" type="email" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Email*">
@@ -32,6 +35,8 @@
   const phone = ref('');
   const password = ref('');
   const passConf = ref('');
+  const error = ref("");
+  const errorDetected = ref(false);
   
   const store = useStore();
   const router = useRouter();
@@ -56,6 +61,8 @@
       router.push('/');
     } catch (err) {
       console.error(err);
+      error.value = "An error occurred / user already exists";
+      errorDetected.value = true;
     }
   }
   </script>
