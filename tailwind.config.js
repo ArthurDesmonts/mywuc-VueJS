@@ -33,6 +33,7 @@ module.exports = {
         },
         customGrey: {
           500: 'color(display-p3 0.706 0.706 0.706)',
+          200: 'color(display-p3 0.707 0.7 0.735)',
         },
       },
       fontFamily: {

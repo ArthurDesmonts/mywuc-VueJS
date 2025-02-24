@@ -1,19 +1,24 @@
 <template>
-    <div class="Dashboard">
-      <h2>Dashboard</h2>
+    <div class="profile">
+      <h2>User Profile</h2>
       <div v-if="user">
-        <p>Wallet of : {{ user.name }} {{ user.firstName }}</p>
+        <p>Name: {{ user.name }}</p>
+        <p v-if="user.firstName != ''">First Name: {{ user.firstName }}</p>
+        <p>Email: {{ user.mail }}</p>
+        <p>Phone: {{ user.phone }}</p>
         <div v-if="user.wallet">
-          <p>Wallet : {{ user.wallet.sold }}</p>
+          <p>Wallet ID: {{ user.wallet.id }}</p>
+          <p>Wallet Sold: {{ user.wallet.sold }}</p>
         </div>
-        <p>Last Transactions:</p>
-        <ul class="border border-gray-300 rounded-md p-2">
+        <p>Transactions:</p>
+        <ul>
           <li v-for="transaction in user.Transactions" :key="transaction.id">
             <p>Type: {{ transaction.type }}</p>
             <p>Amount: {{ transaction.amount }}</p>
             <p>Date: {{ transaction.date }}</p>
           </li>
         </ul>
+
       </div>
       <p v-if="error">{{ error }}</p>
     </div>
