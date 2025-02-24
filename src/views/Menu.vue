@@ -1,7 +1,22 @@
 <template>
-    <div class="w-full h-1/4 flex items-center justify-center">
-        <button class="bg-customBlack-100 text-white px-4 py-2 rounded-md font-customInknut text-xl">
-            Get Started
-        </button>
+    <div class="w-full flex items-center justify-center bg-red-500">
+        <button @click="logout">Logout</button>
     </div>
 </template>
+
+<script setup>
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+  
+const store = useStore();
+const router = useRouter();
+
+const logout = async () => {
+    try {
+      await store.dispatch('logout');
+      router.push('/');
+    } catch (err) {
+      error.value = err.response?.data?.error || 'An error occurred';
+    }
+}
+</script>
