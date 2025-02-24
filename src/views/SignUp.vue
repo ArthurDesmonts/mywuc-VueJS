@@ -46,7 +46,7 @@
       if (password.value !== passConf.value) {
         return;
       }
-      const response = await axios.post("http://127.0.0.1:8000/api/user/create", {
+      const response = await axios.post("/user/create", {
         name: name.value,
         firstName: firstName.value,
         mail: mail.value,
