@@ -7,6 +7,9 @@
                     <h1 class="text-4xl font-bold text-center mb-2 font-customTeko grid-2">Sign In</h1>
                 </div>
                 <form class="flex flex-col items-center justify-center" @submit.prevent="handleSubmit">
+                    <div>
+                        <p v-if="errorDetected" class="px-4 mx-2 w-64 rounded bg-red-500 radius-2 text-center">{{ error }}</p>
+                    </div>
                     <input v-model="mail" required type="email" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Email" autocomplete="email">
                     <input v-model="password" required type="password" class="p-2 m-2 w-64 border border-gray-400 rounded" placeholder="Password" autocomplete="current-password">
                     <div class="flex items-center justify-center gap-2">
@@ -27,6 +30,8 @@ import { useRouter } from 'vue-router';
 
 const mail = ref('');
 const password = ref('');
+const error = ref("");
+const errorDetected = ref(false);
 
 const store = useStore();
 const router = useRouter();
@@ -37,6 +42,8 @@ async function handleSubmit() {
     router.push('/');
   } catch (err) {
     console.error(err);
+    error.value = "No user found with these credentials";
+    errorDetected.value = true;
   }
 }
 </script>
