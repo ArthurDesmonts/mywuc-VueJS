@@ -58,7 +58,7 @@
         },
       });
       await store.dispatch('login', { mail: mail.value, password: password.value });
-      router.push('/');
+      router.push('/dashboard');
     } catch (err) {
       console.error(err);
       error.value = "An error occurred / user already exists";

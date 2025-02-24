@@ -39,7 +39,7 @@ const router = useRouter();
 async function handleSubmit() {
   try {
     await store.dispatch('login', { mail: mail.value, password: password.value });
-    router.push('/');
+    router.push('/dashboard');
   } catch (err) {
     console.error(err);
     error.value = "No user found with these credentials";

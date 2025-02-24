@@ -24,12 +24,15 @@ export default createStore({
       state.status = '';
       state.user = {};
     },
+    set_user(state, user) {
+      state.user = user;
+    },
   },
   actions: {
     login({ commit }, user) {
       return new Promise((resolve, reject) => {
         commit('auth_request');
-        axios.post('http://127.0.0.1:8000/api/user/login', user)
+        axios.post('/user/login', user)
           .then(resp => {
             const token = resp.data.token;
             const userData = resp.data;
@@ -51,6 +54,22 @@ export default createStore({
         localStorage.removeItem('token');
         delete axios.defaults.headers.common['Authorization'];
         resolve();
+      });
+    },
+    fetchUserProfile({ commit }) {
+      return new Promise((resolve, reject) => {
+        axios.get('http://127.0.0.1:8000/api/user/me', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+          .then(resp => {
+            commit('set_user', resp.data);
+            resolve(resp);
+          })
+          .catch(err => {
+            reject(err);
+          });
       });
     },
   },
