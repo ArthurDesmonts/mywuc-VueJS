@@ -9,7 +9,7 @@ const store = useStore();
 </script>
 
 <template>
-  <Menu v-if="store.state.token != ''"></Menu>
+  <Menu v-if="store.state.status == 'success'"></Menu>
   <div class="bg-customWhite-100">
     <RouterView></RouterView>
   </div>
