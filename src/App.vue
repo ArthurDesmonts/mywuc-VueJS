@@ -9,9 +9,11 @@ const store = useStore();
 </script>
 
 <template>
-  <Menu v-if="store.state.status == 'success' || store.state.token !=''"></Menu>
-  <div class="bg-customWhite-100">
-    <RouterView></RouterView>
+  <div class="min-h-screen flex flex-col bg-customWhite-100">
+    <Menu v-if="store.state.status == 'success' || store.state.token !=''"></Menu>
+    <div class="flex-grow pb-16">
+      <RouterView></RouterView>
+    </div>
+    <Footer></Footer>
   </div>
-  <Footer></Footer>
 </template>

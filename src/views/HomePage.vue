@@ -26,7 +26,7 @@
             <hr class="border-t-2 border-customBlack-200 mt-2">
         </div>
 
-        <div class="w-full h-1/4 m-4 flex items-center justify-center cursor-default">
+        <div class="w-full h-1/4 my-6 flex items-center justify-center cursor-default">
             <button class="bg-customBlack-100 text-white px-8 py-2 rounded-md font-customInknut text-xl animate__zoomIn" @click="goToSignIn">
                 Get Started
             </button>
@@ -39,9 +39,22 @@
             <hr class="flex-grow border-t-2 border-customBlack-200 mx-16">
         </div>
 
-        <div class="animate__fadeIn w-screen max-w-4xl mx-16 text-customBlack-200 cursor-default">
-            <div id="subTitle" class=" w-full max-w-4xl text-center ">
-                <p class="font-customInknut text-4xl font-mono font-medium font-">Comming Soon ... :)</p>
+        <div class="flex flex-wrap items-center justify-center my-8 animate__fadeIn">
+            <div class="w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center justify-center p-4">
+            <h3 class="font-customInknut text-2xl font-mono font-medium">Simple</h3>
+            <p class="text-center">A simple and intuitive way to manage your wallet.</p>
+            </div>
+            <div class="w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center justify-center p-4">
+            <h3 class="font-customInknut text-2xl font-mono font-medium">Pleasant</h3>
+            <p class="text-center">A pleasant interface to visualize your budget management.</p>
+            </div>
+            <div class="w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center justify-center p-4">
+            <h3 class="font-customInknut text-2xl font-mono font-medium">Easy</h3>
+            <p class="text-center">A simple interface that allows you minimal effort to use it.</p>
+            </div>
+            <div class="w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center justify-center p-4">
+            <h3 class="font-customInknut text-2xl font-mono font-medium">Complete</h3>
+            <p class="text-center">Essential tools gathered on a single page to stay in control.</p>
             </div>
         </div>
     </div>

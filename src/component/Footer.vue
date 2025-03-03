@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-center items-center bg-customWhite-100 border-t-2 pt-4">
+    <div class="flex flex-col justify-center items-center bg-customWhite-100 border-t-2 pt-4 mt-16 w-full">
         <p>Créé par Arthur Desmonts. 2025</p>
         <div class="flex flex-row justify-center items-center">
             <p>Repository entièrement consultable sur mon GitHub : </p>
