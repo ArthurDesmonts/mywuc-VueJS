@@ -58,7 +58,7 @@ export default createStore({
     },
     fetchUserProfile({ commit }) {
       return new Promise((resolve, reject) => {
-        axios.get('http://127.0.0.1:8000/api/user/me', {
+        axios.get('/user/me', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
