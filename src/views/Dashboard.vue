@@ -30,8 +30,7 @@
           </li>
         </ul>
         <div class="flex flex-row gap-1 mt-1 justify-center">
-          <button class="bg-green-500 w-full p-1 rounded">Debit</button>
-          <button class="bg-red-500 w-full rounded">Credit</button>
+          <button class="bg-customBlue-200 w-full p-1 rounded text-customWhite-100">New transaction</button>
         </div>
       </div>
       <div class="m-4">
