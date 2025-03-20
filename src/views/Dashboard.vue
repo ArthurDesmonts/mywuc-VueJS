@@ -24,14 +24,17 @@
           <li v-for="transaction in user.Transactions" :key="transaction.id" 
           :class="transaction.type === 'DEBIT' ? 'bg-green-100' : 'bg-red-100'"
           class="mb-2 p-2 border-b border-gray-200 rounded-md">
-        <p class="font-medium">Type: {{ transaction.type }}</p>
-        <p>Amount: {{ transaction.amount }}</p>
-        <p class="text-sm text-gray-600">Date: {{ transaction.date }}</p>
+          <p class="font-medium">Type: {{ transaction.type }}</p>
+          <p>Amount: {{ transaction.amount }}</p>
+          <p class="text-sm text-gray-600">Date: {{ transaction.date }}</p>
           </li>
         </ul>
+        <div class="flex flex-row gap-1 mt-1 justify-center">
+          <button class="bg-customBlue-200 w-full p-1 rounded text-customWhite-100">New transaction</button>
+        </div>
       </div>
       <div class="m-4">
-        <p>Evolution of flows :</p>
+        <p class="text-lg font-semibold">Evolution of flows :</p>
         <div class="border border-gray-300 rounded-md p-4 bg-yellow-100 text-yellow-800">
           <p class="text-lg font-semibold">Coming soon</p>
         </div>
