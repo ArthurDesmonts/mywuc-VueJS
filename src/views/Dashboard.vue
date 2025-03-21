@@ -30,7 +30,7 @@
           </li>
         </ul>
         <div class="flex flex-row gap-1 mt-1 justify-center">
-          <button class="bg-customBlue-200 w-full p-1 rounded text-customWhite-100">New transaction</button>
+          <button class="bg-customBlue-200 w-full p-1 rounded text-customWhite-100" @click="OpenTransaction()">New transaction</button>
         </div>
       </div>
       <div class="m-4">
@@ -40,12 +40,14 @@
         </div>
       </div>
     </div>
+    <TransactionForm v-if="transactionAction" @formSubmitted="handleFormSubmitted"></TransactionForm>
   </div>
 </template>
 
 <script setup>
 import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
+import TransactionForm from '@/component/TransactionForm.vue';
 
 const store = useStore();
 const user = computed(() => store.state.user);
@@ -64,4 +66,28 @@ try {
   console.error(err);
 }
 });
+
+/*
+  Transaction form managemen
+*/
+const transactionAction = ref(false);
+
+const OpenTransaction = () => {
+  console.log('Open transaction form');
+  transactionAction.value = true;
+};
+
+const CloseTransaction = () => {
+  console.log('Close transaction form');
+  transactionAction.value = false;
+};
+
+const handleFormSubmitted = (formData) => {
+  console.log('Form submitted', formData);
+  CloseTransaction();
+};
+
+//catch emit : close
+
+
 </script>
