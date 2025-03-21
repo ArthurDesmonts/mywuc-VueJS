@@ -1,10 +1,10 @@
 <!-- PopupForm.vue -->
 <template>
-    <div class="popup-form">
-        <form @submit.prevent="submitForm">
-        <input type="text" v-model="formData.amount" placeholder="Amount" />
-        <DatePicker v-model="formData.selectedDate" :min-date="minDate" :max-date="maxDate" :format="format"/>
-        <button type="submit">Soumettre</button>
+    <div class="fixed inset-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <form @submit.prevent="submitForm" class="flex flex-col gap-4 items-center bg-customWhite-100 p-4 rounded-lg">
+        <input type="float" v-model="formData.amount" placeholder="Amount" class="text-center rounded"/>
+        <DatePicker v-model="formData.selectedDate" :min-date="minDate" :max-date="maxDate" :format="format" placeholder="day/month/year"/>
+        <button type="submit" class="bg-customBlue-200 p-1 w-full rounded text-customWhite-100">Send</button>
         </form>
     </div>
 </template>
@@ -38,19 +38,3 @@ const submitForm = () => {
 }
 
 </script>
-
-<style scoped>
-
-.popup-form {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-</style>
