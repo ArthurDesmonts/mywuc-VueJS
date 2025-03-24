@@ -28,7 +28,7 @@
           </select>
         </div>
         <ul class="border border-gray-300 rounded-md p-2 bg-blue-100 text-blue-800 overflow-y-auto" style="max-height: 290px;">
-          <li v-for="transaction in filteredTransactionList" :key="transaction.id" :class="transaction.type === 'DEBIT' ? 'bg-green-100' : 'bg-red-100'" class="mb-2 p-2 border-b border-gray-200 rounded-md">
+          <li v-for="transaction in filteredTransactionList" :key="transaction.id" :class="transaction.type === 'CREDIT' ? 'bg-green-100' : 'bg-red-100'" class="mb-2 p-2 border-b border-gray-200 rounded-md">
             <p class="font-medium">{{ transaction.type }}</p>
             <p>Amount: {{ transaction.amount }}</p>
             <p class="text-sm text-gray-600">Date: {{ shortedDate(transaction.date) }}</p>
