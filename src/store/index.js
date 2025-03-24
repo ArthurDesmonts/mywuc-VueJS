@@ -72,5 +72,20 @@ export default createStore({
           });
       });
     },
+    addTransaction({ commit }, { id, transaction }) {
+      return new Promise((resolve, reject) => {
+      axios.post(`/wallet/transaction/add/${id}`, transaction, {
+        headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+        .then(resp => {
+        resolve(resp);
+        })
+        .catch(err => {
+        reject(err);
+        });
+      });
+    }
   },
 });

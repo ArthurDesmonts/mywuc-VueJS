@@ -68,7 +68,7 @@ try {
 });
 
 /*
-  Transaction form managemen
+  Transaction form management
 */
 const transactionAction = ref(false);
 
@@ -83,7 +83,15 @@ const CloseTransaction = () => {
 };
 
 const handleFormSubmitted = (formData) => {
-  console.log('Form submitted', formData);
+  let dateReformated = new Date(formData.selectedDate);
+  formData.selectedDate = `${dateReformated.getDate()}/${dateReformated.getMonth() + 1}/${dateReformated.getFullYear()}`;
+  try {
+    store.dispatch('addTransaction', { id: user.value.id, transaction: formData }).then(() => {
+      store.dispatch('fetchUserProfile');
+    });
+  } catch (err) {
+    console.error(err);
+  }
   CloseTransaction();
 };
 
