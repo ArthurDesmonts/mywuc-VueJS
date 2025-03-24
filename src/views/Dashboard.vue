@@ -9,7 +9,7 @@
             <p class="text-2xl">$ {{ user.wallet.sold }}</p>
           </div>
         </div>
-        <div v-if="user && user.Transactions && user.Transactions.length > 0" :class="lastTransaction.type === 'DEBIT' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'" class="border border-gray-300 rounded-md m-4 p-4">
+        <div v-if="user && user.Transactions && user.Transactions.length > 0" :class="lastTransaction.type === 'CREDIT' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'" class="border border-gray-300 rounded-md m-4 p-4">
           <p class="text-lg font-semibold">Last Transaction :</p>
           <p class="text-2xl text-center">$ {{ lastTransaction.amount }}</p>
           <p class="text-sm text-gray-600">{{ shortedDate(lastTransaction.date) }}</p>
