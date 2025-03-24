@@ -20,7 +20,7 @@
       <div v-if="user" class="m-4">
         <div class="flex flex-row gap-1 justify-center">
           <p class="text-lg font-semibold">Transactions:</p>
-          <select name="dateLimitation" id="dateLimitation" class="border border-gray-300 rounded-md p-1 bg-blue-100 text-blue-800 mb-2" @change="updateTransactions">
+          <select v-model="selectedDateLimitation" name="dateLimitation" id="dateLimitation" class="border border-gray-300 rounded-md p-1 bg-blue-100 text-blue-800 mb-2" @change="updateTransactions">
             <option value="All">All Time</option>
             <option value="LastMonth">Last Month</option>
             <option value="LastWeek">Last Week</option>
@@ -72,6 +72,7 @@ const transactionList = computed(() => {
 });
 
 const filteredTransactionList = ref([]);
+const selectedDateLimitation = ref('All');
 
 onMounted(async () => {
   try {
@@ -102,7 +103,9 @@ const handleFormSubmitted = (formData) => {
   formData.selectedDate = `${dateReformated.getDate()}/${dateReformated.getMonth() + 1}/${dateReformated.getFullYear()}`;
   try {
     store.dispatch('addTransaction', { id: user.value.id, transaction: formData }).then(() => {
-      store.dispatch('fetchUserProfile');
+      store.dispatch('fetchUserProfile').then(() => {
+        updateTransactions({ target: { value: selectedDateLimitation.value } });
+      });
     });
   } catch (err) {
     console.error(err);
