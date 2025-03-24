@@ -2,8 +2,8 @@
 <template>
     <div class="fixed inset-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
         <form @submit.prevent="submitForm" class="flex flex-col gap-4 items-center bg-customWhite-100 p-4 rounded-lg">
-        <input type="float" v-model="formData.amount" placeholder="Amount" class="text-center rounded"/>
-        <DatePicker v-model="formData.selectedDate" :min-date="minDate" :max-date="maxDate" :format="format" placeholder="day/month/year"/>
+        <input required type="float" v-model="formData.amount" placeholder="Amount" class="text-center rounded"/>
+        <DatePicker required v-model="formData.selectedDate" :min-date="minDate" :max-date="maxDate" :format="format" placeholder="day/month/year"/>
         <button type="submit" class="bg-customBlue-200 p-1 w-full rounded text-customWhite-100">Send</button>
         </form>
     </div>
