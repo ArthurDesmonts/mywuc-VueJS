@@ -59,7 +59,7 @@ const user = computed(() => store.state.user);
 
 const lastTransaction = computed(() => {
   if (user.value && user.value.Transactions && user.value.Transactions.length > 0) {
-    return user.value.Transactions[user.value.Transactions.length - 1];
+    return user.value.Transactions[0];
   }
   return null;
 });
