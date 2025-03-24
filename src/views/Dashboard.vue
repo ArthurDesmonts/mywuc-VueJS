@@ -13,7 +13,7 @@
             class="border border-gray-300 rounded-md m-4 p-4 bg-green-100 text-green-800">
             <p class="text-lg font-semibold">Last Transaction :</p>
             <p class="text-2xl text-center">$ {{ lastTransaction.amount }}</p>
-            <p class="text-sm text-gray-600">{{ lastTransaction.date }}</p>
+            <p class="text-sm text-gray-600">{{ shortedDate(lastTransaction.date) }}</p>
           </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
           class="mb-2 p-2 border-b border-gray-200 rounded-md">
           <p class="font-medium">Type: {{ transaction.type }}</p>
           <p>Amount: {{ transaction.amount }}</p>
-          <p class="text-sm text-gray-600">Date: {{ transaction.date }}</p>
+          <p class="text-sm text-gray-600">Date: {{ shortedDate(transaction.date) }}</p>
           </li>
         </ul>
         <div class="flex flex-row gap-1 mt-1 justify-center">
@@ -96,6 +96,9 @@ const handleFormSubmitted = (formData) => {
 };
 
 //catch emit : close
-
+const shortedDate = (date) => {
+  let dateReformated = new Date(date);
+  return `${dateReformated.getDate()}/${dateReformated.getMonth() + 1}/${dateReformated.getFullYear()}`;
+};
 
 </script>
