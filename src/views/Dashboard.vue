@@ -41,7 +41,7 @@
       <div class="m-4 border-2 border-gray-300 p-4 rounded-2xl">
         <p class="text-lg font-semibold">Evolution of flows :</p>
         <div class="rounded-md">
-          <CashFlowGraph></CashFlowGraph>
+          <CashFlowGraph :transactions="filteredTransactionList" :key="transactionKey"></CashFlowGraph>
         </div>
       </div>
     </div>
@@ -57,6 +57,7 @@ import CashFlowGraph from '@/component/CashFlowGraph.vue';
 
 const store = useStore();
 const user = computed(() => store.state.user);
+const transactionKey = ref(0);
 
 const lastTransaction = computed(() => {
   if (user.value && user.value.Transactions && user.value.Transactions.length > 0) {
@@ -84,9 +85,6 @@ onMounted(async () => {
   }
 });
 
-/*
-  Transaction form management
-*/
 const transactionAction = ref(false);
 
 const OpenTransaction = () => {
@@ -106,6 +104,7 @@ const handleFormSubmitted = (formData) => {
     store.dispatch('addTransaction', { id: user.value.id, transaction: formData }).then(() => {
       store.dispatch('fetchUserProfile').then(() => {
         updateTransactions({ target: { value: selectedDateLimitation.value } });
+        transactionKey.value += 1;
       });
     });
   } catch (err) {
@@ -114,7 +113,6 @@ const handleFormSubmitted = (formData) => {
   CloseTransaction();
 };
 
-//catch emit : close
 const shortedDate = (date) => {
   let dateReformated = new Date(date);
   return `${dateReformated.getDate()}/${dateReformated.getMonth() + 1}/${dateReformated.getFullYear()}`;
