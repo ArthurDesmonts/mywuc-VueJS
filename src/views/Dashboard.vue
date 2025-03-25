@@ -40,7 +40,7 @@
       </div>
       <div class="m-4">
         <p class="text-lg font-semibold">Evolution of flows :</p>
-        <div class="border border-gray-300 rounded-md">
+        <div class="rounded-md">
           <CashFlowGraph></CashFlowGraph>
         </div>
       </div>

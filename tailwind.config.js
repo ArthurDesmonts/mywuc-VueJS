@@ -31,6 +31,7 @@ module.exports = {
         },
         customWhite: {
           100: 'color(display-p3 0.933 0.933 0.926)',
+          200: 'color(display-p3 0.906 0.887 0.855)',
         },
         customGrey: {
           500: 'color(display-p3 0.706 0.706 0.706)',

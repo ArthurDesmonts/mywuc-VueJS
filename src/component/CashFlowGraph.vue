@@ -71,7 +71,7 @@ function createChart() {
 </script>
 
 <template>
-  <div class="flex justify-center w-full bg-gray-900 rounded p-4">
+  <div class="flex justify-center w-full bg-blue-100 border border-customGrey-500 rounded p-4 mt-2">
     <canvas class="w-full h-64" ref="chart"></canvas>
   </div>
 </template>
