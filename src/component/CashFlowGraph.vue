@@ -33,11 +33,11 @@ const walletFlow = (arrayOfTransactions) => {
   arrayOfTransactions.forEach((transaction) => {
     let date = new Date(transaction.date);
     let key = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-    if (transactionMap.has(key)) {
-      let value = transactionMap.get(key);
-      transactionMap.set(key, value + transaction.amount);
-    } else {
+    if(transactionMap.size == 0) {
       transactionMap.set(key, transaction.amount);
+    } else {
+      let previousAmount = transactionMap.get(Array.from(transactionMap.keys()).pop());
+      transactionMap.set(key, previousAmount + transaction.amount);
     }
   });
   return transactionMap;
