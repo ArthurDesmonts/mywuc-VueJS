@@ -40,8 +40,8 @@
       </div>
       <div class="m-4">
         <p class="text-lg font-semibold">Evolution of flows :</p>
-        <div class="border border-gray-300 rounded-md p-4 bg-yellow-100 text-yellow-800">
-          <p class="text-lg font-semibold">Coming soon</p>
+        <div class="border border-gray-300 rounded-md">
+          <CashFlowGraph></CashFlowGraph>
         </div>
       </div>
     </div>
@@ -53,6 +53,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import TransactionForm from '@/component/TransactionForm.vue';
+import CashFlowGraph from '@/component/CashFlowGraph.vue';
 
 const store = useStore();
 const user = computed(() => store.state.user);
