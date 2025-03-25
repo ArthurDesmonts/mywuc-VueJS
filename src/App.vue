@@ -10,7 +10,7 @@ const store = useStore();
 
 <template>
   <div class="min-h-screen flex flex-col bg-customWhite-100">
-    <Menu v-if="store.state.status == 'success' || store.state.token !=''"></Menu>
+    <Menu v-if="store.state.user && store.state.isLoggedIn"></Menu>
     <div class="flex-grow pb-16">
       <RouterView></RouterView>
     </div>

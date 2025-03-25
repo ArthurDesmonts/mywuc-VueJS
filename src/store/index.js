@@ -6,6 +6,7 @@ export default createStore({
     token: localStorage.getItem('token') || '',
     status: '',
     user: {},
+    isLoggedIn: false,
   },
   mutations: {
     auth_request(state) {
@@ -15,6 +16,7 @@ export default createStore({
       state.token = token;
       state.status = 'success';
       state.user = user;
+      state.isLoggedIn = true;
     },
     auth_error(state) {
       state.status = 'error';
@@ -23,6 +25,7 @@ export default createStore({
       state.token = '';
       state.status = '';
       state.user = {};
+      state.isLoggedIn = false;
     },
     set_user(state, user) {
       state.user = user;
