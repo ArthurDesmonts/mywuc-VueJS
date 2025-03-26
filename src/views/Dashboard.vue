@@ -73,13 +73,22 @@ const transactionList = computed(() => {
   return [];
 });
 
+const firstTransaction = computed(() => {
+  if (user.value && user.value.Transactions && user.value.Transactions.length > 0) {
+    return user.value.Transactions[user.value.Transactions.length - 1];
+  }
+  return null;
+});
+
 const filteredTransactionList = ref([]);
 const selectedDateLimitation = ref('All');
+const lastAmount = ref();
 
 onMounted(async () => {
   try {
     await store.dispatch('fetchUserProfile');
     filteredTransactionList.value = transactionList.value;
+    lastAmount.value = firstTransaction.value;
   } catch (err) {
     console.error(err);
   }
@@ -121,9 +130,11 @@ const shortedDate = (date) => {
 function updateTransactions(event) {
   let dateLimitation = event.target.value;
   let dateLimit = new Date();
-
   if (dateLimitation === 'All') {
     filteredTransactionList.value = transactionList.value;
+    if(lastAmount.value != firstTransaction.value){
+      lastAmount.value = firstTransaction.value;
+    }
   } else {
     if (dateLimitation === 'LastMonth') {
       dateLimit.setMonth(dateLimit.getMonth() - 1);
@@ -137,6 +148,22 @@ function updateTransactions(event) {
       let dateTransaction = new Date(transaction.date);
       return dateTransaction >= dateLimit;
     });
+    lastAmount.value = sumsOfTransactionsAtIndex(indexOfPreviousTransaction(filteredTransactionList.value));
   }
+}
+
+function indexOfPreviousTransaction(list) {
+  let filteredList = [...list];
+  let pivotElement = filteredList.reverse()[0];
+  return transactionList.value.indexOf(pivotElement) + 1;
+}
+
+function sumsOfTransactionsAtIndex(index){
+  let amountList = [...transactionList.value].slice(index).reverse();
+  let sums = 0;
+  for(let i = 0; i < amountList.length; i++){
+    sums += amountList[i].amount;
+  }
+  return sums; 
 }
 </script>
