@@ -4,7 +4,7 @@ import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
 
-const props = defineProps(['transactions']);
+const props = defineProps(['transactions', 'lastAmount']);
 const chart = ref(null);
 const walletAmount = ref(new Map());
 
@@ -59,12 +59,14 @@ const createChart = () => {
 watch(() => props.transactions, (newTransactions) => {
   localTransactions.value = [...newTransactions];
   walletAmount.value = walletFlow(localTransactions.value.reverse());
+  console.log(props.lastAmount);
   createChart();
 });
 
 onMounted(() => {
-  if (props.transactions) {
+  if (props.transactions && props.lastAmount) {
     localTransactions.value = [...props.transactions];
+    console.log(props.lastAmount);
     walletAmount.value = walletFlow(localTransactions.value.reverse());
     createChart();
   }

@@ -41,7 +41,7 @@
       <div class="m-4 border-2 border-gray-300 p-4 rounded-2xl">
         <p class="text-lg font-semibold">Evolution of flows :</p>
         <div class="rounded-md">
-          <CashFlowGraph :transactions="filteredTransactionList" :key="transactionKey"></CashFlowGraph>
+          <CashFlowGraph :transactions="filteredTransactionList" :lastAmount="lastAmount" :key="transactionKey"></CashFlowGraph>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@ onMounted(async () => {
   try {
     await store.dispatch('fetchUserProfile');
     filteredTransactionList.value = transactionList.value;
-    lastAmount.value = firstTransaction.value;
+    lastAmount.value = firstTransaction.value.amount;
   } catch (err) {
     console.error(err);
   }
@@ -97,12 +97,10 @@ onMounted(async () => {
 const transactionAction = ref(false);
 
 const OpenTransaction = () => {
-  console.log('Open transaction form');
   transactionAction.value = true;
 };
 
 const CloseTransaction = () => {
-  console.log('Close transaction form');
   transactionAction.value = false;
 };
 
@@ -132,8 +130,8 @@ function updateTransactions(event) {
   let dateLimit = new Date();
   if (dateLimitation === 'All') {
     filteredTransactionList.value = transactionList.value;
-    if(lastAmount.value != firstTransaction.value){
-      lastAmount.value = firstTransaction.value;
+    if(lastAmount.value != firstTransaction.value.amount){
+      lastAmount.value = firstTransaction.value.amount;
     }
   } else {
     if (dateLimitation === 'LastMonth') {
