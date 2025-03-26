@@ -125,13 +125,17 @@ const shortedDate = (date) => {
   return `${dateReformated.getDate()}/${dateReformated.getMonth() + 1}/${dateReformated.getFullYear()}`;
 };
 
+/**
+ * Update the transaction list and last amount of wallet during a time frame change
+ * @param event 
+ */
 function updateTransactions(event) {
   let dateLimitation = event.target.value;
   let dateLimit = new Date();
   if (dateLimitation === 'All') {
     filteredTransactionList.value = transactionList.value;
     if(lastAmount.value != firstTransaction.value.amount){
-      lastAmount.value = firstTransaction.value.amount;
+      lastAmount.value = null;
     }
   } else {
     if (dateLimitation === 'LastMonth') {
@@ -150,12 +154,22 @@ function updateTransactions(event) {
   }
 }
 
+/**
+ * @Return the index of the last transaction in @transactionList
+ * But the index is out side the @params array @list
+ * Work as an entry point for other function
+ * @param list 
+ */
 function indexOfPreviousTransaction(list) {
   let filteredList = [...list];
   let pivotElement = filteredList.reverse()[0];
   return transactionList.value.indexOf(pivotElement) + 1;
 }
 
+/**
+ * Calculate the Amount of the wallet before a specific @index in the @transactionList attribut
+ * @param index 
+ */
 function sumsOfTransactionsAtIndex(index){
   let amountList = [...transactionList.value].slice(index).reverse();
   let sums = 0;

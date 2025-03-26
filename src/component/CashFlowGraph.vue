@@ -9,14 +9,24 @@ const chart = ref(null);
 const walletAmount = ref(new Map());
 
 const localTransactions = ref([]);
+const lastWalletAmount = ref();
 
+/**
+ * Create the map of points for the graph
+ * Objects : [ 'date' : 'amount']
+ * @param arrayOfTransactions 
+ */
 const walletFlow = (arrayOfTransactions) => {
   let transactionMap = new Map();
   arrayOfTransactions.forEach((transaction) => {
     let date = new Date(transaction.date);
     let key = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     if (transactionMap.size === 0) {
-      transactionMap.set(key, transaction.amount);
+      if (lastWalletAmount.value != null){
+        let startkey = `${date.getDate() - 1}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        transactionMap.set(startkey, lastWalletAmount.value);
+      }
+      transactionMap.set(key, lastWalletAmount.value + transaction.amount);
     } else {
       let previousAmount = transactionMap.get(Array.from(transactionMap.keys()).pop());
       transactionMap.set(key, previousAmount + transaction.amount);
@@ -25,6 +35,9 @@ const walletFlow = (arrayOfTransactions) => {
   return transactionMap;
 };
 
+/**
+ * Create the graph
+ */
 const createChart = () => {
   if (chart.value) {
     const ctx = chart.value.getContext("2d");
@@ -56,17 +69,20 @@ const createChart = () => {
   }
 };
 
+/**
+ * Update props values on time frame changes
+ */
 watch(() => props.transactions, (newTransactions) => {
   localTransactions.value = [...newTransactions];
+  lastWalletAmount.value = props.lastAmount;
   walletAmount.value = walletFlow(localTransactions.value.reverse());
-  console.log(props.lastAmount);
   createChart();
 });
 
 onMounted(() => {
   if (props.transactions && props.lastAmount) {
     localTransactions.value = [...props.transactions];
-    console.log(props.lastAmount);
+    lastWalletAmount.value = props.lastAmount;
     walletAmount.value = walletFlow(localTransactions.value.reverse());
     createChart();
   }
