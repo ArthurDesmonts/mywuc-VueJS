@@ -88,7 +88,7 @@ onMounted(async () => {
   try {
     await store.dispatch('fetchUserProfile');
     filteredTransactionList.value = transactionList.value;
-    lastAmount.value = firstTransaction.value.amount;
+    lastAmount.value = null;
   } catch (err) {
     console.error(err);
   }
