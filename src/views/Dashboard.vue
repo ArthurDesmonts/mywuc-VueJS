@@ -101,14 +101,24 @@ onMounted(async () => {
 
 const transactionAction = ref(false);
 
+/**
+ * Open the transaction form, restricting access to all the other features of the page
+ */
 const OpenTransaction = () => {
   transactionAction.value = true;
 };
 
+/**
+ * Close transaction form
+ */
 const CloseTransaction = () => {
   transactionAction.value = false;
 };
 
+/**
+ * Permits to ADD a transaction to the user wallet, updating at the same time the other feature of dashboard
+ * @param formData 
+ */
 const handleFormSubmitted = (formData) => {
   let dateReformated = new Date(formData.selectedDate);
   formData.selectedDate = `${dateReformated.getDate()}/${dateReformated.getMonth() + 1}/${dateReformated.getFullYear()}`;
@@ -124,6 +134,10 @@ const handleFormSubmitted = (formData) => {
   CloseTransaction();
 };
 
+/**
+ * Date reformated to French format, reduced at the same time for eyes confort
+ * @param date 
+ */
 const shortedDate = (date) => {
   let dateReformated = new Date(date);
   return `${dateReformated.getDate()}/${dateReformated.getMonth() + 1}/${dateReformated.getFullYear()}`;
@@ -183,7 +197,7 @@ function sumsOfTransactionsAtIndex(index){
 
 /**
  * Delete a transaction 
- * 
+ * @param id
  */
 const deleteTransaction = (id) => {
   const transactionId = ref({
