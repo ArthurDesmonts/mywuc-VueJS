@@ -31,7 +31,7 @@
           <li v-for="transaction in filteredTransactionList" :key="transaction.id" :class="transaction.type === 'CREDIT' ? 'bg-green-100' : 'bg-red-100'" class="mb-2 p-2 border-b border-gray-200 rounded-md">
             <div class="flex flex-row w-full justify-between">
               <p class="font-medium">{{ transaction.type }}</p>
-              <button class="flex items-center" @click="deleteTransaction()">
+              <button class="flex items-center" @click="deleteTransaction(transaction.id)">
                 <img src="/close-cross-svgrepo-com.svg" alt="Icon" class="w-6 h-6 mr-2 w-4 h-4"/>
               </button>
             </div>
@@ -116,7 +116,6 @@ const handleFormSubmitted = (formData) => {
     store.dispatch('addTransaction', { id: user.value.id, transaction: formData }).then(() => {
       store.dispatch('fetchUserProfile').then(() => {
         updateTransactions({ target: { value: selectedDateLimitation.value } });
-        transactionKey.value += 1;
       });
     });
   } catch (err) {
@@ -139,9 +138,7 @@ function updateTransactions(event) {
   let dateLimit = new Date();
   if (dateLimitation === 'All') {
     filteredTransactionList.value = transactionList.value;
-    if(lastAmount.value != firstTransaction.value.amount){
-      lastAmount.value = null;
-    }
+    lastAmount.value = null;
   } else {
     if (dateLimitation === 'LastMonth') {
       dateLimit.setMonth(dateLimit.getMonth() - 1);
@@ -188,8 +185,19 @@ function sumsOfTransactionsAtIndex(index){
  * Delete a transaction 
  * 
  */
-
-function deleteTransaction(){
-  
+const deleteTransaction = (id) => {
+  const transactionId = ref({
+    idTransaction: ''
+  });
+  try{
+    transactionId.idTransaction = id;
+    store.dispatch('removeTransaction', { id: user.value.id, transaction: transactionId }).then(() => {
+      store.dispatch('fetchUserProfile').then(() => {
+        updateTransactions({ target: { value: selectedDateLimitation.value } });
+      });
+    });
+  } catch (err) {
+    console.log(err);
+  }
 }
 </script>

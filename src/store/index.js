@@ -89,6 +89,22 @@ export default createStore({
         reject(err);
         });
       });
-    }
+    },
+    removeTransaction({ commit }, { id, transaction }) {
+      return new Promise((resolve, reject) => {
+        axios.delete(`/wallet/transaction/remove/${id}`, {
+          data: transaction,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(resp => {
+          resolve(resp);
+        })
+        .catch(err => {
+          reject(err);
+        });
+      });
+    },    
   },
 });
