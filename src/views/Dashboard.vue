@@ -29,7 +29,12 @@
         </div>
         <ul class="border border-gray-300 rounded-md p-2 bg-blue-100 text-blue-800 overflow-y-auto" style="max-height: 290px;">
           <li v-for="transaction in filteredTransactionList" :key="transaction.id" :class="transaction.type === 'CREDIT' ? 'bg-green-100' : 'bg-red-100'" class="mb-2 p-2 border-b border-gray-200 rounded-md">
-            <p class="font-medium">{{ transaction.type }}</p>
+            <div class="flex flex-row w-full justify-between">
+              <p class="font-medium">{{ transaction.type }}</p>
+              <button class="flex items-center" @click="deleteTransaction()">
+                <img src="/close-cross-svgrepo-com.svg" alt="Icon" class="w-6 h-6 mr-2 w-4 h-4"/>
+              </button>
+            </div>
             <p>Amount: {{ transaction.amount }}</p>
             <p class="text-sm text-gray-600">Date: {{ shortedDate(transaction.date) }}</p>
           </li>
@@ -45,7 +50,7 @@
         </div>
       </div>
     </div>
-    <TransactionForm v-if="transactionAction" @formSubmitted="handleFormSubmitted"></TransactionForm>
+    <TransactionForm v-if="transactionAction" @formSubmitted="handleFormSubmitted" @formClosed="CloseTransaction"></TransactionForm>
   </div>
 </template>
 
@@ -177,5 +182,14 @@ function sumsOfTransactionsAtIndex(index){
     sums += amountList[i].amount;
   }
   return sums; 
+}
+
+/**
+ * Delete a transaction 
+ * 
+ */
+
+function deleteTransaction(){
+  
 }
 </script>
