@@ -4,8 +4,15 @@ import '@/assets/tailwind.css'
 import Menu from '@/component/Menu.vue'
 import { useStore } from 'vuex';
 import Footer from '@/component/Footer.vue'
+import { onMounted } from 'vue';
 
 const store = useStore();
+
+onMounted(() => {
+  store.dispatch('restoreSession').catch(err => {
+    console.error('Failed to restore session:', err);
+  });
+});
 </script>
 
 <template>

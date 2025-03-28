@@ -59,6 +59,26 @@ export default createStore({
         resolve();
       });
     },
+    restoreSession({ commit }) {
+      return new Promise((resolve, reject) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+          axios.get('/user/me')
+            .then(resp => {
+              commit('auth_success', { token, user: resp.data });
+              resolve(resp);
+            })
+            .catch(err => {
+              commit('auth_error');
+              localStorage.removeItem('token');
+              reject(err);
+            });
+        } else {
+          reject(new Error('No token found'));
+        }
+      });
+    },
     fetchUserProfile({ commit }) {
       return new Promise((resolve, reject) => {
         axios.get('/user/me', {
