@@ -48,6 +48,9 @@
         <div class="rounded-md">
           <CashFlowGraph :transactions="filteredTransactionList" :lastAmount="lastAmount" :key="transactionKey"></CashFlowGraph>
         </div>
+        <div class="flex justify-center items-center cursor-default">
+          <p class="w-fit text-customWhite-100 rounded bg-customBlue-200 mt-2 px-2 ">Portfolio amount over the period</p>
+        </div>
       </div>
     </div>
     <TransactionForm v-if="transactionAction" @formSubmitted="handleFormSubmitted" @formClosed="CloseTransaction"></TransactionForm>
