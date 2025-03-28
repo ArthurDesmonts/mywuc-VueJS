@@ -32,10 +32,10 @@
             <div class="flex flex-row w-full justify-between">
               <p class="font-medium">{{ transaction.type }}</p>
               <button class="flex items-center" @click="deleteTransaction(transaction.id)">
-                <img src="/close-cross-svgrepo-com.svg" alt="Icon" class="w-6 h-6 mr-2 w-4 h-4"/>
+                <img src="/close-cross-svgrepo-com.svg" alt="Icon" class="mr-2 w-2 h-2"/>
               </button>
             </div>
-            <p>Amount: {{ transaction.amount }}</p>
+            <p class="w-full my-1 text-center text-black">$ {{ transaction.amount }}</p>
             <p class="text-sm text-gray-600">Date: {{ shortedDate(transaction.date) }}</p>
           </li>
         </ul>
