@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-screen">
-    <div class="bg-customWhite-100 p-4 border-2 border-gray-300 m-4 rounded-2xl">
+    <div class="bg-customWhite-100 p-4 border-2 border-gray-300 m-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
       <h2 class="text-2xl">My Dashboard :</h2>
       <div class="flex flex-row gap-8">
         <div v-if="user" class="ml-4 flex flex-row">
@@ -16,8 +16,8 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-row mt-4">
-      <div v-if="user" class="m-4 border-2 border-gray-300 p-4 rounded-2xl">
+    <div class="flex flex-row ">
+      <div v-if="user" class="m-4 border-2 border-gray-300 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
         <div class="flex flex-row gap-1 justify-center">
           <p class="text-lg font-semibold">Transactions:</p>
           <select v-model="selectedDateLimitation" name="dateLimitation" id="dateLimitation" class="border border-gray-300 rounded-md p-1 bg-blue-100 text-blue-800 mb-2" @change="updateTransactions">
@@ -43,7 +43,7 @@
           <button class="bg-customBlue-200 w-full p-1 rounded text-customWhite-100" @click="OpenTransaction()">New transaction</button>
         </div>
       </div>
-      <div class="m-4 border-2 border-gray-300 p-4 rounded-2xl">
+      <div class="m-4 border-2 border-gray-300 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
         <p class="text-lg font-semibold">Evolution of flows :</p>
         <div class="rounded-md">
           <CashFlowGraph :transactions="filteredTransactionList" :lastAmount="lastAmount" :key="transactionKey"></CashFlowGraph>
