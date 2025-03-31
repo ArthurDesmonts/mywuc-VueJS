@@ -1,10 +1,16 @@
 <script setup>
 import { onMounted, ref, watch } from "vue";
 import { Chart, registerables } from "chart.js";
+import { useStore } from 'vuex';
+
+
+const store = useStore();
+const props = defineProps(['walletId']);
 
 Chart.register(...registerables);
 
 const chart = ref(null);
+const transactionPairMonth = ref(null);
 
 /**
  * Create bar chart of expenses every month during the past year
@@ -14,6 +20,16 @@ const chart = ref(null);
 const walletFlow = (arrayOfTransactions) => {
 };
 
+onMounted(() => {
+    store.dispatch('fetchUserDebitMonthly', { id: props.walletId })
+        .then(transactions => {
+            transactionPairMonth.value = transactions;
+            console.log('Transactions:', transactionPairMonth.value);
+        })
+        .catch(err => {
+            console.error('Error fetching transactions pair month:', err);
+        });
+});
 
 </script>
 

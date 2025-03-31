@@ -55,6 +55,7 @@
       <div class="w-auto m-4 border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
         <p class="text-lg font-semibold">Expenses pair month :</p>
         <div class="rounded-md">
+          <ExpensesPairMonth :walletId="user.wallet.id"></ExpensesPairMonth>
         </div>
         <div class="flex justify-center items-center cursor-default">
           <p class="w-fit text-customWhite-100 rounded bg-customBlue-200 mt-2 px-2 ">Expenses during the last year</p>
@@ -70,6 +71,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import TransactionForm from '@/component/TransactionForm.vue';
 import CashFlowGraph from '@/component/CashFlowGraph.vue';
+import ExpensesPairMonth from '@/component/ExpensesPairMonth.vue';
 
 const store = useStore();
 const user = computed(() => store.state.user);

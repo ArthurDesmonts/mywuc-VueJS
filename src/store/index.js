@@ -95,7 +95,7 @@ export default createStore({
           });
       });
     },
-    addTransaction({ commit }, { id, transaction }) {
+    addTransaction({}, { id, transaction }) {
       return new Promise((resolve, reject) => {
       axios.post(`/wallet/transaction/add/${id}`, transaction, {
         headers: {
@@ -110,7 +110,7 @@ export default createStore({
         });
       });
     },
-    removeTransaction({ commit }, { id, transaction }) {
+    removeTransaction({}, { id, transaction }) {
       return new Promise((resolve, reject) => {
         axios.delete(`/wallet/transaction/remove/${id}`, {
           data: transaction,
@@ -125,6 +125,21 @@ export default createStore({
           reject(err);
         });
       });
-    },    
+    },
+    fetchUserDebitMonthly({}, { id }) {
+      return new Promise((resolve, reject) => {
+        axios.get(`/wallet/transaction/debit/month/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+          .then(resp => {
+            resolve(resp.data);
+          })
+          .catch(err => {
+            reject(err);
+          });
+      });
+    }  
   },
 });
