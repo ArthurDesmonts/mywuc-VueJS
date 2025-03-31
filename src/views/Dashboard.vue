@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="w-auto m-4 border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
-        <p class="text-lg font-semibold">Expenses pair month :</p>
+        <p class="text-lg font-semibold">Expenses per month :</p>
         <div class="rounded-md">
           <ExpensesPairMonth :walletId="user.wallet.id"></ExpensesPairMonth>
         </div>
