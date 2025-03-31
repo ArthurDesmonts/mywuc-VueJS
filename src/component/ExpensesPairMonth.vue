@@ -28,7 +28,6 @@ onMounted(() => {
 
 const createChart = () => {
     if (transactionPerMonth.value) {
-        console.log(transactionPerMonth.value);
         const ctx = chart.value.getContext('2d');
         new Chart(ctx, {
             type: 'bar',

@@ -55,7 +55,7 @@
       <div class="w-auto m-4 border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
         <p class="text-lg font-semibold">Expenses per month :</p>
         <div class="rounded-md">
-          <ExpensesPairMonth :walletId="user.wallet.id"></ExpensesPairMonth>
+          <ExpensesPairMonth v-if="user.wallet" :walletId="user.wallet.id"></ExpensesPairMonth>
         </div>
         <div class="flex justify-center items-center cursor-default">
           <p class="w-fit text-customWhite-100 rounded bg-customBlue-200 mt-2 px-2 ">Expenses during the last year</p>
