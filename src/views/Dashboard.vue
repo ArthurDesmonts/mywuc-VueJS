@@ -52,7 +52,7 @@
           <p class="w-fit text-customWhite-100 rounded bg-customBlue-200 mt-2 px-2 ">Portfolio amount over the period</p>
         </div>
       </div>
-      <div class="w-full m-4 border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
+      <div class="w-auto m-4 border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
         <p class="text-lg font-semibold">Expenses pair month :</p>
         <div class="rounded-md">
         </div>
