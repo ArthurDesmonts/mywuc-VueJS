@@ -46,7 +46,7 @@
       <div class="m-4 border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
         <p class="text-lg font-semibold">Evolution of flows :</p>
         <div class="rounded-md">
-          <CashFlowGraph :transactions="filteredTransactionList" :lastAmount="lastAmount" :key="transactionKey"></CashFlowGraph>
+          <CashFlowGraph :transactions="filteredTransactionList" :lastAmount="lastAmount" ></CashFlowGraph>
         </div>
         <div class="flex justify-center items-center cursor-default">
           <p class="w-fit text-customWhite-100 rounded bg-customBlue-200 mt-2 px-2 ">Portfolio amount over the period</p>
@@ -55,7 +55,7 @@
       <div class="w-auto m-4 border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl">
         <p class="text-lg font-semibold">Expenses per month :</p>
         <div class="rounded-md">
-          <ExpensesPairMonth v-if="user.wallet" :walletId="user.wallet.id"></ExpensesPairMonth>
+          <ExpensesPairMonth v-if="user.wallet" :walletId="user.wallet.id" :key="transactionKey"></ExpensesPairMonth>
         </div>
         <div class="flex justify-center items-center cursor-default">
           <p class="w-fit text-customWhite-100 rounded bg-customBlue-200 mt-2 px-2 ">Expenses during the last year</p>
@@ -139,6 +139,7 @@ const handleFormSubmitted = (formData) => {
     store.dispatch('addTransaction', { id: user.value.id, transaction: formData }).then(() => {
       store.dispatch('fetchUserProfile').then(() => {
         updateTransactions({ target: { value: selectedDateLimitation.value } });
+        transactionKey.value++;
       });
     });
   } catch (err) {
@@ -221,6 +222,7 @@ const deleteTransaction = (id) => {
     store.dispatch('removeTransaction', { id: user.value.id, transaction: transactionId }).then(() => {
       store.dispatch('fetchUserProfile').then(() => {
         updateTransactions({ target: { value: selectedDateLimitation.value } });
+        transactionKey.value++;
       });
     });
   } catch (err) {

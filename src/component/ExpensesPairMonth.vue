@@ -9,27 +9,41 @@ const props = defineProps(['walletId']);
 Chart.register(...registerables);
 
 const chart = ref(null);
+const chartInstance = ref(null);
 const transactionPerMonth = ref([]);
 
 onMounted(() => {
+    if (props.walletId) {
+        updateChart();
+    }
+});
+
+watch(() => props.walletId, (newVal, oldVal) => {
+    if (newVal) {
+        updateChart();
+    }
+});
+
+const updateChart = () => {
     store.dispatch('fetchUserDebitMonthly', { id: props.walletId })
         .then(response => {
             if (response && Array.isArray(response.transactions)) {
                 transactionPerMonth.value = response.transactions;
+                if (chartInstance.value) {
+                    chartInstance.value.destroy();
+                }
                 createChart();
-            } else {
-                console.error('Expected an array of transactions but got:', response);
             }
         })
         .catch(err => {
             console.error('Error fetching transactions per month:', err);
         });
-});
+};
 
 const createChart = () => {
     if (transactionPerMonth.value) {
         const ctx = chart.value.getContext('2d');
-        new Chart(ctx, {
+        chartInstance.value = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -49,8 +63,6 @@ const createChart = () => {
                 }
             }
         });
-    } else {
-        console.error('transactionPerMonth is not an array:', transactionPerMonth.value);
     }
 };
 </script>
