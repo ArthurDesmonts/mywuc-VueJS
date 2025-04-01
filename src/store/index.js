@@ -140,6 +140,21 @@ export default createStore({
             reject(err);
           });
       });
+    },
+    fetchUserCreditMonthly({}, { id }) {
+      return new Promise((resolve, reject) => {
+        axios.get(`/wallet/transaction/credit/month/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+          .then(resp => {
+            resolve(resp.data);
+          })
+          .catch(err => {
+            reject(err);
+          });
+      });
     }  
   },
 });
