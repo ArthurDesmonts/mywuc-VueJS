@@ -1,18 +1,25 @@
 <template>
-    <div class="m-4"  v-if="user">
-        <div class="w-full border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl mb-4">
+  <div class="flex justify-center">
+    <div class="m-10 w-1/3 flex flex-col"  v-if="user">
+        <div class=" border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl mb-4">
           <h2>User Profile</h2>
-            <p>Name: {{ user.name }}</p>
-            <p v-if="user.firstName != ''">First Name: {{ user.firstName }}</p>
-            <p>Email: {{ user.mail }}</p>
-            <p>Phone: {{ user.phone }}</p>
-            <div v-if="user.wallet">
-              <p>Wallet ID: {{ user.wallet.id }}</p>
-              <p>Wallet Sold: {{ user.wallet.sold }}</p>
+          <div class="flex flex-row justify-evenly mt-4">
+            <div class="flex flex-col gap-10 m-10">
+              <p>Name: {{ user.name }}</p>
+              <p v-if="user.firstName != ''">First Name: {{ user.firstName }}</p>
             </div>
+            <div class="flex flex-col gap-10 m-10">
+              <p>Email: {{ user.mail }}</p>
+              <p>Phone: {{ user.phone }}</p>
+            </div>
+            <div v-if="user.wallet" class="flex flex-col gap-10 m-10">
+              <p>Wallet ID: {{ user.wallet.id }}</p>
+              <p>Available Sold: {{ user.wallet.sold }}</p>
+            </div>
+          </div>
         </div>
         <div class="border border-gray-200 p-4 rounded-2xl bg-customWhite-100 filter drop-shadow-2xl" @click="dropDownTransactionList()">
-          <div class="flex flex-row justify-center gap-8" v-show="!dropDownList">
+          <div class="flex flex-row justify-evenly" v-show="!dropDownList">
             <p>Transaction List</p>
             <span>▼</span>
           </div>
@@ -24,8 +31,9 @@
             </li>
           </ul>
         </div>
+      </div>
+      <p v-if="error">{{ error }}</p>
     </div>
-    <p v-if="error">{{ error }}</p>
   </template>
   
   <script setup>
