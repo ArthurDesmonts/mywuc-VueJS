@@ -8,7 +8,7 @@ import store from './store'
 //API requires
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://mywuc.onrender.com/api';
+axios.defaults.baseURL = 'https://mywuc.onrender.com/api'; // Set the base URL for axios requests
 
 const app = createApp(App)
 
